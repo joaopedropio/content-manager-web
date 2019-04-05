@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route } from 'react-router';
+import { Layout } from './components/Layout';
+import { Home } from './components/Home';
+import DashTest from './components/DashTest';
+import Person from './components/Person';
 
-class App extends Component {
-  render() {
+export default class App extends Component {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Layout>
+        <Route exact path='/' component={Home} />
+        <Route path='/person' component={Person} />
+        <Route path='/dashtest' component={DashTest} />
+      </Layout>
     );
   }
 }
-
-export default App;
