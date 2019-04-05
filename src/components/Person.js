@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const { url } = require('../config');
+import { url } from '../config';
 
 export default class Person extends Component {
 
@@ -20,24 +20,33 @@ export default class Person extends Component {
 
     let api = url + '/api/person';
 
-    axios.post(api, this.state)
+    axios.post(api, { 
+      name: this.state.name,
+      birthday: this.state.birthday,
+      nationality: this.state.nationality
+     })
       .then(response => console.log(response.data))
       .catch(error => console.log(error));
   }
 
-  handleChange() {}
+  onChange = e => this.setState({ [e.target.name]: e.target.value })
 
   render () {
+    const { 
+      name,
+      birthday,
+      nationality
+    } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         Name:<br/>
-        <input type="text" value={this.state.name} onChange={this.handleChange} />
+        <input type="text" name="name" value={name} onChange={this.onChange} />
         <br/>
         Birthday:<br/>
-        <input type="text" value={this.state.birthday} onChange={this.handleChange} />
+        <input type="text" name="birthday" value={birthday} onChange={this.onChange} />
         <br/>
         Nationality:<br/>
-        <input type="text" value={this.state.nationality} onChange={this.handleChange} />
+        <input type="text" name="nationality" value={nationality} onChange={this.onChange} />
         <br/><br/>
         <input type="submit" value="Submit" />
       </form>
