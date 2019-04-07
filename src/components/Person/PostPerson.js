@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { url } from '../config';
+import { url } from '../../config';
 
-export default class Person extends Component {
+export default class PostPerson extends Component {
 
   constructor(props) {
     super(props);

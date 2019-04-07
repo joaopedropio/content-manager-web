@@ -1,0 +1,38 @@
+version: '3'
+services:
+  contentmanagerbff:
+    image: joaopio/content-manager-bff
+    depends_on:
+      - contentapi
+      - mysql
+    environment:
+      - CONTENT_API_URL=http://contentapi
+    networks:
+      - contentmanagernetwork
+    ports:
+      - "5000:5000"
+
+  contentapi:
+    image: joaopio/content-api
+    depends_on:
+      - mysql
+    environment:
+      - CONNECTION_STRING=Server=mysql;Database=content;Uid=content;Pwd=content1234
+    networks:
+      - contentmanagernetwork
+    ports:
+      - "8080:80"
+
+  mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=content
+      - MYSQL_USER=content
+      - MYSQL_PASSWORD=content1234
+    networks:
+      - contentmanagernetwork
+    ports:
+      - "3306:3306"
+networks:
+  contentmanagernetwork:

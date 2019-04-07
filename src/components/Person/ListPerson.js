@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { url } from '../config';
+import { url } from '../../config';
 
 export default class ListPerson extends Component {
 
@@ -46,8 +46,3 @@ export default class ListPerson extends Component {
         );
     }
 }
-
-/*
-               {this.state.users.length === 0 ?  : 
-               )}
-*/
