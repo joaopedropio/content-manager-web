@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
+import { Switch } from 'react-router-dom';
 
 export class Layout extends Component {
   static displayName = Layout.name;
@@ -10,7 +11,9 @@ export class Layout extends Component {
       <div>
         <NavMenu />
         <Container>
-          {this.props.children}
+          <Switch>
+            {this.props.children}
+          </Switch>
         </Container>
       </div>
     );
