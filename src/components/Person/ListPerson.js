@@ -1,47 +1,43 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { url } from '../../config';
+import PersonRepository from './PersonRepository';
 
 export default class ListPerson extends Component {
 
     constructor(props){
         super(props);
 
+        this.repo = new PersonRepository();
+
         this.state = {
             persons: []
-        };
+        }
     }
 
-    getPersons = async () => {
-        let res = await axios.get(url + '/api/person');
-        let data = await res.data;
-        if (data === null || data === undefined){
-            this.setState({ persons: [] });
-        } else {
-            this.setState({ persons: data });
-        }
+    getPersons = async() => {
+        const persons = await this.repo.getAll();
+        this.setState({ persons: [...persons] });
     };
 
-    async componentDidMount() {
-        await this.getPersons();
-    };
+    componentDidMount = async () => await this.getPersons();
 
     render() {
+        let list;
+        if(this.state.persons.length === 0) {
+            list = <div>Loading...</div>;
+        } else {
+            list = this.state.persons.map((e, i) => {
+                return (
+                    <div className="card" key={i}>
+                        <p>{e.name}</p>
+                        <p>{e.birthday}</p>
+                        <p>{e.nationality}</p>
+                    </div>
+            )});
+        }
+
         return (
             <div className="jumbotron">
-                {
-                    this.state.persons.length === 0
-                        ? (<div>Loading...</div>)
-                        : (this.state.persons.map((e, i) => {
-                            return (
-                                <div className="card" key={i}>
-                                    <p>{e.name}</p>
-                                    <p>{e.birthday}</p>
-                                    <p>{e.nationality}</p>
-                                </div>
-                            );
-                        }))       
-                }
+                { list }
             </div>
         );
     }

@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { url } from '../../config';
+import PersonRepository from './PersonRepository';
 
 export default class PostPerson extends Component {
 
-  constructor(props) {
+  constructor(props){
     super(props);
+
     this.state = {
-      name: 'Mickey',
-      birthday: '11-11-2000',
-      nationality: 'EUA'
+      name: "",
+      birthday: "",
+      nationality: ""
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.repo = new PersonRepository();
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
-    let api = url + '/api/person';
-
-    axios.post(api, { 
-      name: this.state.name,
-      birthday: this.state.birthday,
-      nationality: this.state.nationality
-     })
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error));
+    this.repo.add({ ...this.state });
   }
 
   onChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -37,6 +29,7 @@ export default class PostPerson extends Component {
       birthday,
       nationality
     } = this.state;
+
     return (
       <form onSubmit={this.handleSubmit}>
         Name:<br/>
