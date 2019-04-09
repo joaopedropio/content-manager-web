@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-const domain = process.env.BFF_DOMAIN || 'localhost';//'${BFF_DOMAIN}';
-const port = process.env.BFF_PORT || '5000';
+const domain = (process.env.REACT_APP_DEV) ? 'localhost' : '${BFF_DOMAIN}';
+// eslint-disable-next-line
+const port = (process.env.REACT_APP_DEV) ? '5000' : '${BFF_PORT}';
 
 export const url = `http://${domain}:${port}`;
