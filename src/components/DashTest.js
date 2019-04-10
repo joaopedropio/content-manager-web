@@ -12,10 +12,9 @@ export default class DashTest extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.setupManifestUrl = this.setupManifestUrl.bind(this);
-    this.setupVideo = this.setupVideo.bind(this);
   }
 
-  setupManifestUrl(event) {
+  setupManifestUrl = (event) => {
     event.preventDefault();
 
     const { manifestUrl, authorization } = this.state;
@@ -30,7 +29,7 @@ export default class DashTest extends Component {
     this.setupVideo(manifestUrl, authorization, '#video');
   }
 
-  static setupVideo(url, auth, videoTag) {
+  setupVideo = (url, auth, videoTag) => {
     const player = dashjs.MediaPlayer().create();
     player.extend('RequestModifier', () => ({
       modifyRequestHeader: (xhr) => {

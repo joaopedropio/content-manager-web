@@ -1,20 +1,33 @@
 import React from 'react';
-import { Route } from 'react-router';
-import Layout from './components/Layout';
+import { Container } from 'reactstrap';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
+import NavMenu from './components/NavMenu';
 import Home from './components/Home';
 import DashTest from './components/DashTest';
 import Person from './components/Person/Person';
 import Error from './components/Error';
 import Media from './components/Media/Media';
 
-const App = () => (
-  <Layout>
-    <Route exact path="/" component={Home} />
-    <Route path="/person" component={Person} />
-    <Route path="/dashtest" component={DashTest} />
-    <Route path="/media" component={Media} />
-    <Route component={Error} />
-  </Layout>
+const App = ({ basename }) => (
+  <BrowserRouter basename={basename}>
+    <div>
+      <NavMenu />
+      <Container>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/person" component={Person} />
+          <Route path="/dashtest" component={DashTest} />
+          <Route path="/media" component={Media} />
+          <Route component={Error} />
+        </Switch>
+      </Container>
+    </div>
+  </BrowserRouter>
 );
+
+App.propTypes = {
+  basename: PropTypes.string.isRequired,
+};
 
 export default App;
