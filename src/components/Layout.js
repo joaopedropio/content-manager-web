@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'reactstrap';
-import { NavMenu } from './NavMenu';
 import { Switch } from 'react-router-dom';
+import { NavMenu } from './NavMenu';
 
-export class Layout extends Component {
-  static displayName = Layout.name;
+const Person = (props) => {
+  const { children } = props;
 
-  render () {
-    return (
-      <div>
-        <NavMenu />
-        <Container>
-          <Switch>
-            {this.props.children}
-          </Switch>
-        </Container>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <NavMenu />
+      <Container>
+        <Switch>
+          {children}
+        </Switch>
+      </Container>
+    </div>
+  );
+};
+
+export default Person;

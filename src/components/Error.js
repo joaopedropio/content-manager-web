@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Error extends Component {
-    render() {
-        return(
-            <div>
-                <h1>This page does not exist!</h1>
-            </div>
-        );
-    };
-}
+export default () => (
+  <div>
+    <h1>This page does not exist!</h1>
+  </div>
+);
