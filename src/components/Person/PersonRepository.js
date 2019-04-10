@@ -1,45 +1,46 @@
 import axios from 'axios';
 import { url } from '../../config';
+import moment from 'moment';
+
 
 export default class PersonRepository {
     
     constructor(persons) {
-        let person = {
-            id: 0,
-            name: 'Tom Hanks',
-            nationality: 'eua'
-        }
-        if (persons === undefined){
-            this.persons = [person];
-        } else {
-            this.persons = persons;
-        }
+        this.persons = persons;
     }
     
     getAll = async () => {
         let res = await axios.get(url + '/api/person');
         let data = await res.data;
         return (data === undefined) ? [] : data;
-        //return this.persons;
     }
 
     find = async (id) => {
-        let res = await axios.get(url + '/api/person/' + id);
-        return await res.data;
-        //return this.persons.find((person) => person.id === id);
+        const res = await axios.get(url + '/api/person/' + id);
+        const person = await res.data;
+        return {
+            id: person.id,
+            name: person.name,
+            birthday: moment(person.birthday, 'DD-MM-YYYY'),
+            nationality: person.nationality
+        };
     }
 
     add = async (person) => {
-        await axios.post(url + '/api/person', { ...person })
+        const p = {
+            name: person.name,
+            birthday: moment(person.birthday).format('DD-MM-YYYY'),
+            nationality: person.nationality,
+        }
+
+        await axios.post(url + '/api/person', p)
             .then(response => console.log(response.data))
             .catch(error => console.log(error));
-        //this.persons = [...this.persons, person];
     }
 
     remove = async (id) => {
-        await axios.post(url + '/api/person/' + id)
+        await axios.delete(url + '/api/person/' + id)
             .then(response => console.log(response.data))
             .catch(error => console.log(error));
-        //this.persons = this.persons.filter((person) => person.id !== id);
     }
 }

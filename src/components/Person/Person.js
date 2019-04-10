@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PersonList from './PersonList';
-import PersonForm from './PostForm';
+import PersonForm from './PersonForm';
 import PersonRepository from './PersonRepository';
 
 export default class Person extends Component {
@@ -30,12 +30,18 @@ export default class Person extends Component {
         this.setState(({ persons: persons }));
     }
 
+    onDelete = async (personId) => {
+        await this.repo.remove(personId);
+        const persons = await this.repo.getAll();
+        this.setState(({ persons: persons }));
+    }
+
     render() {
         const persons = [...this.state.persons];
 
         return (
             <div>
-                <PersonList persons={(() => persons)()}/>
+                <PersonList persons={persons} onDelete={this.onDelete}/>
                 <PersonForm handleSubmit={this.handleSubmit}/>
             </div>
         );
