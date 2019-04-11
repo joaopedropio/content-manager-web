@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { Component } from 'react';
+import publicIp from 'public-ip';
 import dashjs from 'dashjs';
 import authRepo from '../../repositories/AuthRepository';
 import { contentServerUrl } from '../../config';
@@ -43,10 +44,11 @@ export default class DashTest extends Component {
   }
 
   componentDidMount = async() => {
-    const username = 'contentmanagerweb';
+    const ip = await publicIp.v4();
+    const username = `contentmanagerweb-{ip}`;
     let auth = await authRepo.find(username);
 
-    if(auth === undefined) {
+    if(auth === undefined || auth.ipadress !== ip) {
       auth = await authRepo.add(username);
     }
 
