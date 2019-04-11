@@ -1,8 +1,12 @@
 import React from 'react';
 import MediaFiles from './MediaFiles';
 
-export default () => (
+const Media = () => (
   <div>
     <MediaFiles />
   </div>
 );
+
+Media.displayName = 'Media Component';
+
+export default Media;

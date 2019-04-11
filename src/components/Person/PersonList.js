@@ -29,7 +29,7 @@ PersonList.propTypes = {
   onDelete: PropTypes.func.isRequired,
   persons: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    birthday: PropTypes.instanceOf(Date).isRequired,
+    birthday: PropTypes.string.isRequired,
     nationality: PropTypes.string.isRequired,
   })).isRequired,
 };

@@ -1,10 +1,10 @@
 import axios from 'axios';
-import moment from 'moment';
 import { url } from '../../config';
 
 export default class PersonRepository {
   constructor(persons) {
     this.persons = persons;
+    this.displayName = 'Person Repository';
   }
 
   getAll = async () => {
@@ -19,19 +19,13 @@ export default class PersonRepository {
     return {
       id: person.id,
       name: person.name,
-      birthday: moment(person.birthday, 'DD-MM-YYYY'),
+      birthday: new Date(person.birthday),
       nationality: person.nationality,
     };
   }
 
   add = async (person) => {
-    const p = {
-      name: person.name,
-      birthday: moment(person.birthday).format('DD-MM-YYYY'),
-      nationality: person.nationality,
-    };
-
-    await axios.post(`${url}/api/person`, p)
+    await axios.post(`${url}/api/person`, person)
       .then(response => console.log(response.data))
       .catch(error => console.log(error));
   }

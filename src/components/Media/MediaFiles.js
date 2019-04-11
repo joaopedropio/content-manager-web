@@ -35,8 +35,8 @@ export default class MediaFiles extends Component {
       <div>
         <h1>Arquivos de Media</h1>
         {
-          (mediaPaths.map((value, index) => (
-            <div className="card" key={index}>
+          (mediaPaths.map(value => (
+            <div className="card" key={value}>
               <p>{value}</p>
             </div>
           )))

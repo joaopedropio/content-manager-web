@@ -1,7 +1,11 @@
 import React from 'react';
 
-export default () => (
+const Home = () => (
   <div>
     <h1>Hello, world!</h1>
   </div>
 );
+
+Home.displayName = 'Home Component';
+
+export default Home;

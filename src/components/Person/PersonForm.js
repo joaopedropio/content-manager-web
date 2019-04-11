@@ -7,6 +7,7 @@ class PersonForm extends Component {
   constructor(props) {
     super(props);
 
+    this.displayName = 'Person Form Component';
     this.state = {
       name: '',
       birthday: new Date(),
@@ -25,12 +26,9 @@ class PersonForm extends Component {
 
     return (
       <form onSubmit={event => this.handleSubmit(event, person)}>
-        Name:
-        <br />
+        <p>Name:</p>
         <input type="text" name="name" value={person.name} onChange={this.onChange} />
-        <br />
-        Birthday:
-        <br />
+        <p>Birthday:</p>
         <DatePicker
           selected={person.birthday}
           onChange={this.onBirthdayChange}
@@ -40,12 +38,8 @@ class PersonForm extends Component {
           dateFormat="dd/MM/yyyy"
           dropdownMode="select"
         />
-        <br />
-        Nationality:
-        <br />
+        <p>Nationality:</p>
         <input type="text" name="nationality" value={person.nationality} onChange={this.onChange} />
-        <br />
-        <br />
         <input type="submit" value="Submit" />
       </form>
     );

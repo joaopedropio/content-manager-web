@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PersonList from './PersonList';
 import PersonForm from './PersonForm';
 import PersonRepository from './PersonRepository';
+import { format } from 'date-fns';
 
 export default class Person extends Component {
   constructor(props) {
@@ -24,7 +25,15 @@ export default class Person extends Component {
   handleSubmit = async (event, person) => {
     event.preventDefault();
 
-    await this.repo.add({ ...person });
+    const { name, birthday, nationality } = person;
+
+    const p = {
+      name,
+      nationality,
+      birthday: format(birthday, 'DD-MM-YYYY'),
+    };
+
+    await this.repo.add(p);
     const persons = await this.repo.getAll();
     this.setState(({ persons }));
   }
