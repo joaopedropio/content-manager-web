@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MediaList = (props) => {
-
   const { medias } = props;
   return (
     <div>
@@ -21,7 +20,12 @@ const MediaList = (props) => {
 };
 
 MediaList.propTypes = {
-    medias: PropTypes.array.isRequired()
+  medias: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+  })).isRequired
 };
 
-export default MediaList;s
+export default MediaList;

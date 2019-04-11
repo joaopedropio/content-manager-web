@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { url } from '../../config';
+import csClient from '../../clients/ContentServerClient';
 
 export default class MediaFiles extends Component {
   constructor(props) {
@@ -11,20 +10,16 @@ export default class MediaFiles extends Component {
     this.getMediaFilesPaths = this.getMediaFilesPaths.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     await this.getMediaFilesPaths();
   }
 
-  async getMediaFilesPaths() {
-    const api = `${url}/mediafiles`;
-
-    const res = await axios.get(api);
-
-    const data = await res.data;
-    if (data === null || data === undefined) {
+  getMediaFilesPaths = async () => {
+    const mediaPaths = await csClient.findMediaFiles();
+    if (mediaPaths === null || mediaPaths === undefined) {
       this.setState({ mediaPaths: [] });
     } else {
-      this.setState({ mediaPaths: data });
+      this.setState({ mediaPaths: mediaPaths });
     }
   }
 

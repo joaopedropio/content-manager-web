@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { format } from 'date-fns';
 import PersonList from './PersonList';
 import PersonForm from './PersonForm';
-import PersonRepository from './PersonRepository';
-import { format } from 'date-fns';
+import repo from '../../repositories/PersonRepository';
 
 export default class Person extends Component {
   constructor(props) {
@@ -11,12 +11,10 @@ export default class Person extends Component {
     this.state = {
       persons: [],
     };
-
-    this.repo = new PersonRepository();
   }
 
   getPersons = async () => {
-    const persons = await this.repo.getAll();
+    const persons = await repo.getAll();
     this.setState({ persons: [...persons] });
   };
 
@@ -33,14 +31,14 @@ export default class Person extends Component {
       birthday: format(birthday, 'DD-MM-YYYY'),
     };
 
-    await this.repo.add(p);
-    const persons = await this.repo.getAll();
+    await repo.add(p);
+    const persons = await repo.getAll();
     this.setState(({ persons }));
   }
 
   onDelete = async (personId) => {
-    await this.repo.remove(personId);
-    const persons = await this.repo.getAll();
+    await repo.remove(personId);
+    const persons = await repo.getAll();
     this.setState(({ persons }));
   }
 
