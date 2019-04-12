@@ -44,7 +44,7 @@ export default class NavMenu extends Component {
                   <NavLink tag={Link} className="text-dark" to="/convert">Convert</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/dashtest">Dash Test</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/mediatest">Media Test</NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/person">Person</NavLink>

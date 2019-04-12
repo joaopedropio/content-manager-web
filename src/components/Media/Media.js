@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaFiles from './MediaFiles';
+import MediaFiles from '../MediaTest/MediaFilePaths';
 
 const Media = () => (
   <div>
