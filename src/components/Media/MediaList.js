@@ -5,7 +5,8 @@ const MediaList = (props) => {
   const { medias } = props;
   return (
     <div>
-      {medias.map((media) => {
+      {
+        medias.map((media) => {
           return (
             <div key='media.id'>
               <p>{media.name}</p>
@@ -14,7 +15,8 @@ const MediaList = (props) => {
               <p>{media.type}</p>
             </div>
           );
-      })}      
+        })
+      }
     </div>
   );
 };
