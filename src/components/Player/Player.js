@@ -8,31 +8,17 @@ import authService from '../../services/AuthService';
 
 class Player extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    const { path } = this.props;
-
     this.state = {
-      path: path, 
-      player: undefined,
       token: undefined
-    }
+    };
   }
+  
+  componentDidMount = async () => await this.authenticate();
 
-  componentDidMount = async() => {
-    await this.updateToken();
-
-    let { player, token, path} = this.state;
-
-    if(path !== '' && token !== undefined ) {
-      const videoUrl = contentServerUrl + path;
-
-      this.playVideo(player, videoUrl, token);
-    }
-  }
-
-  updateToken = async () => {
+  authenticate = async () => {
     let { token } = this.state;
 
     if(token === undefined) {
@@ -44,23 +30,16 @@ class Player extends Component {
     }
   }
 
-  playVideo = (player, videoUrl, token) => {
-    if(player !== undefined)
-      player.reset();
-
-    const newPlayer = PlayerHelper.create(videoUrl, token, '#video');
-  }
-
   render() {
 
-    let { player, token } = this.state;
+    let { token } = this.state;
 
     let { path } = this.props;
 
     const videoUrl = contentServerUrl + path;
 
-    if(path !== '')
-      this.playVideo(player, videoUrl, token);
+    PlayerHelper.play('#video', videoUrl, token);
+    
     return (
       <video
         id="video"

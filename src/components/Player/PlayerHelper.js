@@ -13,6 +13,15 @@ const PlayerHelper = {
 
     player.initialize(document.querySelector(videoTag), manifestUrl, true);
     return player;
+  },
+
+  play: (videoTag, videoUrl, token) => {
+    if(window.player !== undefined) {
+      window.player.reset();
+      window.player = undefined;
+    }
+
+    window.player = PlayerHelper.create(videoUrl, token, videoTag);
   }
 }
 
