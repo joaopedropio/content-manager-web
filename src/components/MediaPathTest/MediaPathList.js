@@ -32,11 +32,11 @@ class MediaPathList extends Component {
         {
           mediaPaths.map(value => {
             return (
-              <div key={value}>
+              <ul className="list-group" key={value}>
                 <MediaPath 
                   path={value}
                 />
-              </div>
+              </ul>
             );
           })
        }

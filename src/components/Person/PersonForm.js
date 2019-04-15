@@ -40,7 +40,9 @@ class PersonForm extends Component {
         />
         <p>Nationality:</p>
         <input type="text" name="nationality" value={person.nationality} onChange={this.onChange} />
-        <input type="submit" value="Submit" />
+        <div>
+          <input type="submit" className="btn btn-success" value="Submit" />
+        </div>
       </form>
     );
   }

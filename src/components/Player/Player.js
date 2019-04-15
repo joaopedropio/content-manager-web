@@ -40,8 +40,14 @@ class Player extends Component {
 
     PlayerHelper.play('#video', videoUrl, token);
     
+    const style = {
+      margin: '0 auto',
+      padding: '10px'
+    }
+
     return (
       <video
+        style={style}
         id="video"
         width="640"
         height="360"

@@ -1,13 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Container,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
@@ -34,28 +25,30 @@ export default class NavMenu extends Component {
 
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarBrand tag={Link} to="/">Content Manager</NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
+        <nav className="navbar navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
+          <div className="container">
+            <a className="navbar-brand" href="/">Content Manager</a>
+            <button type="button" onClick={this.toggleNavbar} className="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div id="navbarSupportedContent" className="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
               <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/convert">Convert</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/mediatest">Media Test</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/person">Person</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/media">Media</NavLink>
-                </NavItem>
+                <div className="nav-item">
+                  <Link to="/movie">Movie</Link>
+                </div>
+                <div className="nav-item">
+                  <Link to="/mediatest">Media Test</Link>
+                </div>
+                <div className="nav-item">
+                  <Link to="/person">Person</Link>
+                </div>
+                <div className="nav-item">
+                  <Link to="/media">Media</Link>
+                </div>
               </ul>
-            </Collapse>
-          </Container>
-        </Navbar>
+            </div>
+          </div>
+        </nav>
       </header>
     );
   }

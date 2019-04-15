@@ -28,7 +28,7 @@ export default class Person extends Component {
     const p = {
       name,
       nationality,
-      birthday: format(birthday, 'DD-MM-YYYY'),
+      birthday: format(birthday, 'MM-DD-YYYY'),
     };
 
     await repo.add(p);
@@ -45,8 +45,12 @@ export default class Person extends Component {
   render() {
     const { persons } = this.state;
 
+    const style = {
+      textAlign: 'center'
+    }
+
     return (
-      <div>
+      <div style={style}>
         <PersonList persons={persons} onDelete={this.onDelete} />
         <PersonForm handleSubmit={this.handleSubmit} />
       </div>
