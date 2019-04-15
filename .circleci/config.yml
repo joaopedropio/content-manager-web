@@ -16,5 +16,6 @@ jobs:
             docker build -t joaopio/content-manager-web .
             docker push joaopio/content-manager-web:latest
 
-      -   name: Deploy
+      - run:
+          name: Deploy
           command: curl -X POST $DOCKER_WEBHOOK
