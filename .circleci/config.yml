@@ -18,4 +18,4 @@ jobs:
 
       - run:
           name: Deploy
-          command: curl -X POST $DOCKER_WEBHOOK
+          command: apk update && apk add curl && curl -X POST $DOCKER_WEBHOOK
