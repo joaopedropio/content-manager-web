@@ -44,11 +44,23 @@ class MediaMain extends Component {
     
     let mediaList;
     if (medias === undefined) {
-      mediaList = <h1>Loading ...</h1>
+      mediaList = (
+        <div className="jumbotron">
+          <h1>Loading ...</h1>
+        </div>
+      );
     } else if (medias.length === 0) {
-      mediaList = <h1>There is no media saved.</h1>
+      mediaList = (
+        <div className="jumbotron">
+          <h1>There is no media saved.</h1>
+        </div>
+      );
     } else {
-      mediaList = <MediaList onClick={this.onDelete} medias={medias} />
+      mediaList = (
+        <div className="jumbotron">
+          <MediaList onClick={this.onDelete} medias={medias} />
+        </div>
+      );
     }
 
     const style = {

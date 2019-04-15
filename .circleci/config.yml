@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: tmaier/docker-compose
+    working_directory: ~/my-app
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      
+      - run:
+          name: Publish
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker build -t joaopio/content-manager-web .
+            docker push joaopio/content-manager-web:latest
+
+      -   name: Deploy
+          command: curl -X POST $DOCKER_WEBHOOK
