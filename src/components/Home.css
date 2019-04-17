@@ -11,3 +11,8 @@
 #home_row {
   margin: auto;
 }
+
+#home_row h1 {
+  color: black;
+  /* text-shadow: -1px 0 #F5EE92, 0 1px #F5EE92, 1px 0 #F5EE92, 0 -1px #F5EE92; */
+}

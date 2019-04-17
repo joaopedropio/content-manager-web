@@ -21,15 +21,19 @@ html {
   margin: 1px;
   margin-right: 5px;
   margin-left: 5px;
-  border-style: solid;
+  /* border-style: solid;
   border-radius: 5px;
-  border-color: #C6B18B;
+  border-color: #C6B18B; */
 }
 
 a {
-  color: #D3D273;
+  color: #fff;
+}
+
+a:hover {
+  color: #ccc;
 }
 
 .bgNav {
-  background-color: #BC8D57;
+  background-color: #9A4641;
 }

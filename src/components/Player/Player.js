@@ -36,18 +36,15 @@ class Player extends Component {
 
     let { path } = this.props;
 
+    if (path === undefined || path === '')
+      return <h1>Loading...</h1>
+
     const videoUrl = contentServerUrl + path;
 
     PlayerHelper.play('#video', videoUrl, token);
-    
-    const style = {
-      margin: '0 auto',
-      padding: '10px'
-    }
 
     return (
       <video
-        style={style}
         id="video"
         width="640"
         height="360"

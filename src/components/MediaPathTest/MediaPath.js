@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CLICK_UPDATE_PATH from '../../actions/actionTypes'
+import CLICK_UPDATE_PATH from '../../actions/actionTypes';
+
+import './MediaPath.css';
 
 const MediaPath = (props) => {
 
@@ -13,8 +15,8 @@ const MediaPath = (props) => {
   return (
     <div className='list-group-item'>
       <div className='row'>
-        <p className='col-sm-10'>{path}</p>
-        <button className='col-sm-2 btn btn-primary' type='button' onClick={() => props.onPathClick(path)}>Play</button>
+        <p className='col-sm-11'>{path}</p>
+        <button className='col-sm-1' type='button' onClick={() => props.onPathClick(path)}>Play</button>
       </div>
     </div>
   )

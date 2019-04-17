@@ -1,6 +1,12 @@
 import publicIp from 'public-ip';
 import authRepo from '../repositories/AuthRepository';
 
+const createAuthentication = async (username) => {
+  await authRepo.add(username);
+  const auth = await authRepo.find(username);
+  return auth.token;
+}
+
 const AuthService = {
   authenticate: async () => {
       const ip = await publicIp.v4();
@@ -8,12 +14,10 @@ const AuthService = {
       let auth = await authRepo.find(username);
   
       if(auth === undefined || auth.ipadress !== ip) {
-        auth = await authRepo.add(username);
+        return await createAuthentication(username);
       }
 
-      const token = auth.token
-
-      return token;
+      return auth.token;
   }
 }
 
