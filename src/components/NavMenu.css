@@ -16,3 +16,20 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.nav-item-button {
+  margin: 1px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #C6B18B;
+}
+
+a {
+  color: #D3D273;
+}
+
+.bgNav {
+  background-color: #BC8D57;
+}

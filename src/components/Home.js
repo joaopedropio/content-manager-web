@@ -1,8 +1,13 @@
 import React from 'react';
+import './Home.css'
 
 const Home = () => (
-  <div className="jumbotron">
-    <h1 id="home_header">Hello, world!</h1>
+  <div id="home" className="container jumbotron">
+    <div id="home_row" className="row">
+      <div id="home_header" className="col-12">
+        <h1>Welcome to Content Manager</h1>
+      </div>
+    </div>
   </div>
 );
 

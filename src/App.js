@@ -9,6 +9,8 @@ import Person from './components/Person/Person';
 import Error from './components/Error';
 import MediaMain from './components/Media/MediaMain';
 
+import './App.css'
+
 const App = ({ basename }) => (
   <BrowserRouter basename={basename}>
     <div>
