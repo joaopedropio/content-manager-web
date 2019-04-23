@@ -4,7 +4,6 @@ COPY . .
 RUN apk add yarn
 RUN yarn install --production && yarn run build
 
-
 FROM nginx:alpine
 WORKDIR /etc/nginx/site/static/js
 COPY --from=build-env /build /etc/nginx/site
