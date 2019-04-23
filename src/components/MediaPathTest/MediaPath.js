@@ -16,7 +16,7 @@ const MediaPath = (props) => {
     <div className='list-group-item'>
       <div className='row'>
         <p className='col-sm-11'>{path}</p>
-        <button className='col-sm-1' type='button' onClick={() => props.onPathClick(path)}>Play</button>
+        <button className='col-sm-1 playButton' type='button' onClick={() => props.onPathClick(path)}>Play</button>
       </div>
     </div>
   )

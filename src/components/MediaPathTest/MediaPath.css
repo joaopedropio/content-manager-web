@@ -1,9 +1,9 @@
-button {
+.playButton {
     border-radius: 10px;
     border-color: black;
     background-color: #27B35C;
 }
 
-button:hover {
+.playButton:hover {
     background-color: #6BFFA3;
 }

@@ -5,7 +5,7 @@ import './NavMenu.css';
 const NavMenu = () => {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg bgNav">
+      <nav className="navbar navbar-dark navbar-expand-lg bgNav">
         <Link to="/">Content Manager</Link>
         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
