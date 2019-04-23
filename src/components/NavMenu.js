@@ -6,7 +6,7 @@ const NavMenu = () => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg bgNav">
-        <a className="navbar-brand" href="/">Content Manager</a>
+        <Link to="/">Content Manager</Link>
         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
