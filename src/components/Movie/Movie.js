@@ -1,40 +1,48 @@
-import React, { Component } from 'react';
-import MovieRepository from '../../repositories/MovieRepository';
-import MovieList from './MovieList';
-import MovieForm from './MovieForm';
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import './Movie.css';
 
-class Movie extends Component {
+const Movie = (props) => {
 
-  constructor(props) {
-    super(props);
+  const { movie } = props;
 
-    this.state = {
-      movies: []
-    }
-  }
-
-  componentDidMount = async () => {
-    const movies = await MovieRepository.list();
-
-    this.setState({
-      movies: movies
-    })
-  }
-
-  render() {
-
-    const { movies } = this.state;
-
-    if(movies === []) 
-      return <h1>No movies available</h1>;
-
-    return (
-      <div>
-        <MovieList movies={movies} />
-        <MovieForm />
+  return (
+    <div className="movie">
+      <div className="card">
+        <div className="card-header">{movie.name}</div>
+        <div className="card-body">
+          <div className="row card-text">
+            <p className="col-2">{movie.coverImage}</p>
+            <p className="col-2">{movie.country}</p>
+            <p className="col-2">{movie.releaseDate}</p>
+            <p className="col-2">{movie.studio}</p>
+            <p className="col-2">{movie.synopsis}</p>
+            <p className="col-2">{movie.shortDescription}</p>
+            <p className="col-2">{movie.duration}</p>
+            <p className="col-2">{movie.budget}</p>
+            <p className="col-2">{movie.video}</p>
+            <p className="col-2">{movie.professionals}</p>
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+Movie.propTypes = {
+  movie: PropTypes.objectOf(PropTypes.shape({
+    name: PropTypes.string,
+    coverImage: PropTypes.string,
+    country: PropTypes.string,
+    releaseDate: PropTypes.string,
+    studio: PropTypes.string,
+    synopsis: PropTypes.string,
+    shortDescription: PropTypes.string,
+    duration: PropTypes.string,
+    budget: PropTypes.string,
+    video: PropTypes.string,
+    professionals: PropTypes.string,
+  }))
+};
 
 export default Movie;

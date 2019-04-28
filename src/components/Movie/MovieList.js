@@ -1,4 +1,5 @@
 import React from 'react';
+import Movie from './Movie';
 
 const MovieList = (props) => {
   const { movies } = props;
@@ -8,19 +9,7 @@ const MovieList = (props) => {
 
   const formatedMovies = movies.map((movie) => {
     return (
-      <div key={movie.id}>
-        <p>movie.name</p>
-        <p>movie.coverImage</p>
-        <p>movie.country</p>
-        <p>movie.releaseDate</p>
-        <p>movie.studio</p>
-        <p>movie.synopsis</p>
-        <p>movie.shortDescription</p>
-        <p>movie.duration</p>
-        <p>movie.budget</p>
-        <p>movie.video</p>
-        <p>movie.professionals</p>
-      </div>
+      <Movie movie={movie} key={movie.id} />
     );
   });
 

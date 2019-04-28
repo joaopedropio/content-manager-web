@@ -8,7 +8,7 @@ import MediaPathTest from './components/MediaPathTest/MediaPathTest';
 import Person from './components/Person/Person';
 import Error from './components/Error';
 import MediaMain from './components/Media/MediaMain';
-import Movie from './components/Movie/Movie';
+import Movie from './components/Movie';
 
 const App = ({ basename }) => (
   <BrowserRouter basename={basename}>
