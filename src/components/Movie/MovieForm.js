@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MediaSearch from '../Seach/MediaSearch';
 
 class MovieForm extends Component {
   constructor(props) {
@@ -38,18 +39,51 @@ class MovieForm extends Component {
     return (
       <div>
         <form>
-          <input type="text" value="Name" onChange={this.onChange} />
-          <input type="text" value="Cover Image" onChange={this.onChange} />
-          <input type="text" value="Country" onChange={this.onChange} />
-          <input type="text" value="Release Date" onChange={this.onChange} />
-          <input type="text" value="Studio" onChange={this.onChange} />
-          <input type="text" value="Synopsis" onChange={this.onChange} />
-          <input type="text" value="Short Description" onChange={this.onChange} />
-          <input type="text" value="Duration" onChange={this.onChange} />
-          <input type="text" value="Budget" onChange={this.onChange} />
-          <input type="text" value="Video" onChange={this.onChange} />
-          <input type="text" value="Professionals" onChange={this.onChange} />
-          <button type="submit" onClick={(event) => this.onSubmit(event)}>Submit</button>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
+            <input className="form-control" type="text" id="name" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="coverImage">CoverImage</label>
+            <input className="form-control" type="text" id="coverImage" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="country">Country</label>
+            <input className="form-control" type="text" id="country" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="releaseDate">Release Date</label>
+            <input className="form-control" type="text" id="releaseDate" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="studio">Studio</label>
+            <input className="form-control" type="text" id="studio" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="synopsis">Synopsis</label>
+            <input className="form-control" type="text" id="synopsis" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="shortDescription">Short Description</label>
+            <input className="form-control" type="text" id="shortDescription" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="duration">Duration</label>
+            <input className="form-control" type="text" id="duration" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="budget">Budget</label>
+            <input className="form-control" type="text" id="budget" onChange={this.onChange} />
+          </div>
+          <div className="form-group">
+            <label htmlFor="video">Video</label>
+            <MediaSearch />
+          </div>
+          <div className="form-group">
+            <label htmlFor="professionals">Professionals</label>
+            <input className="form-control" type="text" id="professionals" onChange={this.onChange} />
+          </div>
+          <button className="btn btn-primary" type="submit" onClick={(event) => this.onSubmit(event)}>Submit</button>
         </form>
       </div>
     );
