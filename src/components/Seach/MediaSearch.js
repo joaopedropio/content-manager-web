@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import MediaRepository from '../../repositories/MediaRepository';
+import Select from 'react-select';
 
 class MediaSearch extends Component {
   
@@ -23,7 +23,6 @@ class MediaSearch extends Component {
   render() {
 
     const { medias } = this.state;
-    const { id } = this.props;
 
     if(medias === undefined)
       return <h1>Loading...</h1>;
@@ -31,18 +30,20 @@ class MediaSearch extends Component {
     if (medias.length === 0)
       return <h1>No medias</h1>;
 
-    const options = medias.map((media) => <option key={media.id} value={media.id}>{media.name}</option>);
+    const options = medias.map((media) => { return { label: media.name, value: media.name }});
 
-    return <select id={id} className="selectpicker" data-live-search="true">{options}</select>;
+    return (
+      <Select
+        onChange={this.handleChange}
+        options={options}
+      />
+    );
   }
-}
 
-MediaSearch.defaultProps = {
-  id: "MediaSearchTag"
-}
-
-MediaSearch.propTypes = {
-  id: PropTypes.string
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });
+    console.log(`Option selected:`, selectedOption);
+  }
 }
 
 export default MediaSearch;
